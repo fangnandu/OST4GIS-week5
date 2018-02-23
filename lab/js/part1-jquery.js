@@ -171,5 +171,62 @@ var Stamen_TonerLite = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/ton
 // the function passed to `ready` until the HTML document is fully loaded and all scripts have
 // been interpreted. It is, therefore, an example of asynchronous behavior.
 $(document).ready(function() {
+  //task 1
+  $('#text-label1').text("Street Address");
+  $('#text-label2').text("Zipcode");
+  $('#text-label3').text("City");
+  $('#number-label').text('Year of Built');
+  $('#checkbox-label1').text('Is Vacant');
+  $('#checkbox-label2').text('Is Residential');
+  $('#color-label').text('Mark As');
+  $("body > div.sidebar > button").text('Search');
+  $('#main-heading').text('Search Properties');
+
+ //task 2
+
+   $('#text-input1').val('3131 Walnut St');
+   $('#text-input2').val('19104');
+   $('#text-input3').val('Philadelphia');
+   $('#numeric-input').val(2010);
+   $('#cbox-input1').prop('checked',true);
+   $('#cbox-input2').prop('checked',true);
+   $('#color-input').val('#4976f4');
+
+  //task 3
+  var input_reading = function(){
+      var myArrays=[['#text-label1','#text-input1'],['#text-label2','#text-input2'],['#text-label3','#text-input3'],['#number-label','#numeric-input'],['#checkbox-label1','#cbox-input1'],['#checkbox-label2','#cbox-input2'],['#color-label','#color-input']];
+      _.map(myArrays, function(myArray){ return [myArray[0]=$(myArray[0]).text(),myArray[1]=$(myArray[1]).val()]; });
+      var allInformation = {};
+      _.each(myArrays, function(myArray){
+        allInformation[myArray[0]]=myArray[1];
+      });
+      console.log(allInformation);
+    };
+
+// task 4
+
+  $('#text-input1').prop('disabled', false);
+  $('#text-input2').prop('disabled', false);
+  $('#text-input3').prop('disabled', false);
+  $('#numeric-input').prop('disabled', false);
+  $('#cbox-input1').prop('disabled', false);
+  $('#cbox-input2').prop('disabled', false);
+
+
+//task 5
+  $('body > div.sidebar > button').click(function(){input_reading();});
+//task 6
+  $('#number-label2').text('Latitude');
+  $('#number-label3').text('Longtitude');
+  $('#numeric-input2').val(39.953642);
+  $('#numeric-input3').val(-75.187749);
+  $('#numeric-input2').prop('disabled',false);
+  $('#numeric-input3').prop('disabled',false);
+  L.circleMarker([$('#numeric-input2').val(),$('#numeric-input3').val()]).addTo(map).bindPopup($('#text-input1').val()).openPopup();
+
+
+  //  $( "button").click(function(console.log("2"))
+
+
   // Do your stuff here
 });
